@@ -1,0 +1,58 @@
+.movie-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+
+.movie-list-item {
+  display: flex;
+  align-items: center;
+  --pill-accent: var(--bright-blue);
+  background: color-mix(in srgb, var(--pill-accent) 5%, transparent);
+  color: var(--pill-accent);
+  padding-inline: 0.75rem;
+  padding-block: 0.75rem;
+  border-radius: .55rem;
+  border: 0;
+  transition: background 0.3s ease;
+  font-family: var(--inter-font);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4rem;
+  letter-spacing: -0.00875rem;
+  text-decoration: none;
+}
+
+.movie-list-item:hover {
+  background: color-mix(in srgb, var(--pill-accent) 15%, transparent);
+}
+
+.movie-list .movie-list-item:nth-child(6n + 1) {
+  --pill-accent: var(--bright-blue);
+}
+.movie-list .movie-list-item:nth-child(6n + 2) {
+  --pill-accent: var(--french-violet);
+}
+.movie-list .movie-list-item:nth-child(6n + 3) {
+  --pill-accent: var(--hot-red);
+}
+
+.movie-list .movie-list-item:nth-child(6n + 4) {
+  --pill-accent: var(--orange-red);
+}
+
+.movie-list movie-list-item:nth-child(6n + 5) {
+  --pill-accent: var(--vivid-pink);
+}
+
+.movie-list svg {
+  margin-inline-start: 0.25rem;
+}
+
+.movie-list a:-webkit-any-link {
+  color: inherit;
+}

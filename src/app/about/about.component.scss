@@ -1,0 +1,21 @@
+ul.about-steps {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+ul.about-steps li {
+  position: relative;
+  padding-left: 20px; /* Adjust as needed */
+}
+
+ul.about-steps li::before {
+  content: '\2022'; /* Unicode for bullet character or any other character */
+  position: absolute;
+  left: 0;
+  font-size: 15px; /* Adjust size if needed */
+  line-height: 1; /* Adjust line height to align with text */
+}
+
+ul.about-steps li.completed::before {
+  content: '✔️'; /* Unicode for bullet character or any other character */
+}
