@@ -11,7 +11,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-    projectRoot: 'src'
+    projectRoot: 'my-movies-angular'
     artifactName: 'drop'
 
 steps:
@@ -29,7 +29,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy dist to artifacts'
   inputs:
-      SourceFolder: '$(projectRoot)/dist'
+      SourceFolder: 'dist/$(projectRoot)'
       Contents: '**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)/dist'
       cleanTargetFolder: true
