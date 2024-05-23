@@ -10,6 +10,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+    projectRoot: 'src'
+    artifactName: 'drop'
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -21,8 +25,17 @@ steps:
     npm install
     ng build
   displayName: 'npm install and build'
-- task: PublishBuildArtifacts@1
+
+- task: CopyFiles@2
+  displayName: 'Copy dist to artifacts'
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+      SourceFolder: '$(projectRoot)/dist'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/dist'
+      cleanTargetFolder: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts'
+  inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: '$(artifactName)'
