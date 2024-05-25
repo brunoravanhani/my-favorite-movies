@@ -26,6 +26,15 @@ steps:
     ng build
   displayName: 'npm install and build'
 
+
+- task: CopyFiles@2
+  displayName: 'Copy terraform files'
+  inputs:
+      SourceFolder: 'terraform/$(projectRoot)'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/terraform'
+      cleanTargetFolder: true
+
 - task: CopyFiles@2
   displayName: 'Copy dist to artifacts'
   inputs:
