@@ -30,7 +30,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy terraform files'
   inputs:
-      SourceFolder: 'terraform/$(projectRoot)'
+      SourceFolder: 'terraform'
       Contents: '**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)/terraform'
       cleanTargetFolder: true
