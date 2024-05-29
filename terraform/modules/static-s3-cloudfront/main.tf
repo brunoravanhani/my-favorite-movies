@@ -32,10 +32,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     origin_id                = local.s3_domain
   }
 
-  aliases = [ "bruno.ravanhani.com" ]
+  aliases = [ ]
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Distribution to site bruno.ravanhani.com"
+  comment             = "Distribution My Movies"
   default_root_object = "index.html"
 
   restrictions {
@@ -59,10 +59,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = false
-    acm_certificate_arn = "arn:aws:acm:us-east-1:087730237728:certificate/aa2f6bf4-5421-4ea4-8781-87f3eb8e28c7"
-    ssl_support_method = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2021"
+    cloudfront_default_certificate = true
   }
 }
 
