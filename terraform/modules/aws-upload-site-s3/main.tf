@@ -18,7 +18,7 @@ resource "aws_s3_object" "upload" {
 
   bucket = var.bucket_name
   key    = each.value
-  source = "${var.path}\\${each.value}"
-  etag   = filemd5("${var.path}\\${each.value}")
-  content_type = lookup(local.content_type_map, split(".", "C:\\Projetos\\Iteris\\aws\\corrida-static\\${each.value}")[1], "text/html")
+  source = "${var.path}/${each.value}"
+  etag   = filemd5("${var.path}/${each.value}")
+  content_type = lookup(local.content_type_map, split(".", "${var.path}/${each.value}")[1], "text/html")
 }
