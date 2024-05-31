@@ -32,7 +32,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     origin_id                = local.s3_domain
   }
 
-  aliases = [ ]
+  aliases = [ "movies.ravanhani.com" ]
   enabled             = true
   is_ipv6_enabled     = true
   comment             = "Distribution My Movies"
@@ -59,7 +59,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    cloudfront_default_certificate = false
+    acm_certificate_arn = "arn:aws:acm:us-east-1:087730237728:certificate/a8b51db0-e8e3-48fd-a4bf-71b8c34c4ab5"
+    ssl_support_method = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 }
 
